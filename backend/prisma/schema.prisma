@@ -1,13 +1,12 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
+
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
-
-
 
 //
 // ENUMS = règles simples, évitent les "strings magiques"
@@ -367,8 +366,4 @@ model StudyGroupMember {
 
   @@unique([groupId, userId])
   @@index([userId])
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
