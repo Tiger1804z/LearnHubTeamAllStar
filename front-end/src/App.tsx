@@ -6,6 +6,9 @@ import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import LearnerDashboard from "./pages/LearnerDashboard";
+
+
 
 export default function App() {
   return (
@@ -25,12 +28,8 @@ export default function App() {
         {/* Authentification */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
-        {/* Tableau de bord (UI seulement pour l’instant) */}
-        <Route
-          path="/dashboard"
-          element={<div className="container">Dashboard</div>}
-        />
+        <Route path="/courses" element={<div className="container">Catalogue</div>} />
+        <Route path="/dashboard" element={<LearnerDashboard />} />
       </Routes>
     </>
   );
