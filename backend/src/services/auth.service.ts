@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt, { type SignOptions } from "jsonwebtoken";
-import type { UserRole } from "../generated/prisma/enums";
+
 import type { JwtPayload  } from "../types/auth.types";
 
 const JWT_SECRET_ENV = process.env.JWT_SECRET;

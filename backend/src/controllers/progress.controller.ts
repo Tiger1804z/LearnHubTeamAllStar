@@ -1,4 +1,4 @@
-import { prisma } from "../lib/prisma.js";
+import prisma from "../prisma/prisma";
 
 // temporaire pour live tant que lauth nest pas la
 const getUserId = () => "cmkefe0bs0000j5osvwoeow88";
