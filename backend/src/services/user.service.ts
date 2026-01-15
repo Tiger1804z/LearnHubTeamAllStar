@@ -1,7 +1,7 @@
 import type { UserRole } from "../generated/prisma/enums";
 import type { LoginInput, SignupInput } from "../types/input.types";
 import prisma from "../prisma/prisma";
-import * as auth from "./auth.services";
+import * as auth from "./auth.service";
 
 
 const allowedRolesForSignup = new Set<UserRole>(["learner", "creator","mentor"]);

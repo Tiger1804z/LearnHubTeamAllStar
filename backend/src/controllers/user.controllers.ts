@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import {z} from "zod";
-import { signupService,loginService } from "../services/user.services";
-import type {UserRole} from "@prisma/client";
+import { signupService,loginService } from "../services/user.service";
+
 
 
 const signupSchema = z.object({

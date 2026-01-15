@@ -1,5 +1,4 @@
-import type { UserRole } from "@prisma/client";
-
+import type { PathLevel, UserRole } from "../generated/prisma/enums";
 
 export type LoginInput = {
   email: string;
@@ -13,3 +12,12 @@ export type SignupInput = {
   password: string;
   role?: UserRole;
 };
+
+
+export type UpdatePathInput = Partial<{
+  title: string;
+  description: string;
+  category: string;
+  level: PathLevel;
+  estMinutes: number | null;
+}>;
