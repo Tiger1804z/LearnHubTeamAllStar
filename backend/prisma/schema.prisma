@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
 }
 
 
@@ -75,7 +76,8 @@ model Profile {
   userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  displayName String
+  displayName String @default("")
+
   bio         String?
   avatarUrl   String?
 
