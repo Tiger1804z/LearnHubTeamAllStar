@@ -5,7 +5,7 @@ type Mode = "login" | "register";
 
 type Props = {
   mode: Mode;
-  onSubmit: (data: { email: string; password: string; confirmPassword?: string }) => Promise<void>;
+  onSubmit: (data: { email: string; password: string; confirmPassword?: string; firstName?: string; lastName?: string }) => Promise<void>;
   isLoading?: boolean;
   apiError?: string | null;
 };
@@ -19,7 +19,7 @@ export default function AuthForm({ mode, onSubmit, isLoading = false, apiError }
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [localError, setLocalError] = useState<string | null>(null);
-
+  
   const isRegister = mode === "register";
 
   const canSubmit = useMemo(() => {
@@ -37,9 +37,14 @@ export default function AuthForm({ mode, onSubmit, isLoading = false, apiError }
     if (!email.trim() || !password) return setLocalError("Tous les champs sont obligatoires.");
     if (!isValidEmail(email)) return setLocalError("Email invalide.");
     if (password.length < 8) return setLocalError("Mot de passe trop court (min 8).");
-    if (isRegister && password !== confirmPassword) return setLocalError("Les mots de passe ne matchent pas.");
 
-    await onSubmit({ email: email.trim(), password, confirmPassword: isRegister ? confirmPassword : undefined });
+    await onSubmit({
+  email: email.trim(),
+  password,
+  confirmPassword: isRegister ? confirmPassword : undefined,
+});
+
+
   }
 
   return (
