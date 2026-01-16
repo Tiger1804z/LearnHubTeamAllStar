@@ -1,11 +1,13 @@
 import prisma from "../prisma/prisma";
 
-// temporaire pour live tant que lauth nest pas la
-const getUserId = () => "cmkefe0bs0000j5osvwoeow88";
+
+const TEMP_USER_ID = "cmkefe0bs0000j5osvwoeow88";
+const getUserId = (req: any) => req?.user?.userId ?? TEMP_USER_ID;
+
 
 export const enroll = async (req: any, res: any) => {
   try {
-    const userId = getUserId();
+    const userId = getUserId(req);
     const pathId = req.params.pathId;
 
     await prisma.enrollment.upsert({
@@ -23,7 +25,7 @@ export const enroll = async (req: any, res: any) => {
 
 export const getProgress = async (req: any, res: any) => {
   try {
-    const userId = getUserId();
+    const userId = getUserId(req);
     const pathId = req.params.pathId;
 
     const lessons = await prisma.lesson.findMany({
