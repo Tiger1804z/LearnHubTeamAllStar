@@ -292,3 +292,21 @@ section {
 .module h3 {
   margin-bottom: 0.5rem;
 }
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.navbar {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar a {
+  margin-right: 1rem;
+}
