@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import userRoutes from "./routes/user.routes";
@@ -7,9 +8,11 @@ import catalogRoutes from "./routes/catalog.routes";
 import moduleRoutes from "./routes/module.routes";
 import lessonRoutes from "./routes/lessons.routes";
 import quizzRoutes from "./routes/quizz.routes";
+import apiRoutes from "./routes/api.routes";
 
 import dotenv from "dotenv";
 dotenv.config();
+
 
 
 
@@ -35,4 +38,8 @@ app.use("/api/progress", progressRoutes);
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
+
+  app.use(express.json());
+app.use("/api", apiRoutes);
+
 });
