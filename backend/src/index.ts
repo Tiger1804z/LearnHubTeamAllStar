@@ -6,6 +6,12 @@ import pathRoutes from "./routes/path.routes";
 import catalogRoutes from "./routes/catalog.routes";
 import moduleRoutes from "./routes/module.routes";
 import lessonRoutes from "./routes/lessons.routes";
+import quizzRoutes from "./routes/quizz.routes";
+
+import dotenv from "dotenv";
+dotenv.config();
+
+
 
 const app = express();
 
@@ -20,6 +26,8 @@ app.use("/paths", pathRoutes);
 app.use("/catalog", catalogRoutes);
 app.use("/", moduleRoutes);
 app.use("/", lessonRoutes);
+app.use("/", quizzRoutes);
+
 
 
 app.use("/api/progress", progressRoutes);
