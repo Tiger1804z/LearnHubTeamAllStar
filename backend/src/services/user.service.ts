@@ -78,3 +78,48 @@ export const loginService = async (data: LoginInput) => {
 
 
 
+
+// user connecté, ses cours avec progression
+export const getMyLearningPathService = async (userId: string) => {
+  const enrollments = await prisma.enrollment.findMany({
+    where: { userId },
+    include: {
+      path: {
+        include: {
+          modules: {
+            include: {
+              lessons: {
+                include: {
+                  progress: {
+                    where: { userId },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  return enrollments.map((enrollment) => {
+    const lessons = enrollment.path.modules.flatMap(
+      (m) => m.lessons
+    );
+
+    const completed = lessons.filter(
+      (l) => l.progress[0]?.isCompleted
+    ).length;
+
+    const progressPercent =
+      lessons.length === 0
+        ? 0
+        : Math.round((completed / lessons.length) * 100);
+
+    return {
+      id: enrollment.path.id,
+      title: enrollment.path.title,
+      progressPercent,
+    };
+  });
+};

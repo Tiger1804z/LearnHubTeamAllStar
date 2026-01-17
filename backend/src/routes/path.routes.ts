@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { createPath,updatePath,deletePath,publishPath,getPathById,getPathTree } from "../controllers/path.controller";
 import { authenticate } from "../middleware/auth.middleware";
+import { enrollToPath } from "../controllers/enrollment.controller";
 
 const router = Router();
 
@@ -13,5 +14,8 @@ router.post("/", authenticate, createPath);
 router.patch("/:id", authenticate, updatePath);
 router.delete("/:id", authenticate, deletePath);
 router.post("/:id/publish", authenticate, publishPath);
+router.post( "/:id/enroll", authenticate, enrollToPath);
+ 
+
 
 export default router;

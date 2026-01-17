@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import {z} from "zod";
-import { signupService,loginService } from "../services/user.service";
+import { signupService,loginService,getMyLearningPathService } from "../services/user.service";
 
 
 
@@ -66,3 +66,14 @@ export const me = async (req: Request, res: Response) => {
     }
     return res.status(200).json({ ok: true, user: req.user });
 }
+
+
+export const getMyLearningPath = async (req: Request, res: Response) => {
+  if (!req.user) {
+    return res.status(401).json({ ok: false, error: "UNAUTHORIZED" });
+  }
+
+  const courses = await getMyLearningPathService(req.user.userId);
+
+  return res.json({ ok: true, courses });
+};

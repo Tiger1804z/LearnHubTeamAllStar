@@ -24,6 +24,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
+console.log("DB =", process.env.DATABASE_URL);
+
+
 app.use("/users", userRoutes);
 app.use("/paths", pathRoutes);
 app.use("/catalog", catalogRoutes);
