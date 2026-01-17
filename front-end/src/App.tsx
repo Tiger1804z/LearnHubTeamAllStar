@@ -53,6 +53,9 @@ export default function App() {
         <Route path="/mentorship" element={<ProtectedRoute><Mentorship /></ProtectedRoute>} />
 
         <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+
+        <Route path="/dashboard" element={<ProtectedRoute><LearnerDashboard /></ProtectedRoute>} />
+
       </Routes>
     </AuthProvider>
   );
