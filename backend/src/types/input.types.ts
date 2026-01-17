@@ -21,3 +21,4 @@ export type UpdatePathInput = Partial<{
   level: PathLevel;
   estMinutes: number | null;
 }>;
+
