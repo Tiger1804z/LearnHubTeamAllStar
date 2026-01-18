@@ -10,13 +10,8 @@ import lessonRoutes from "./routes/lessons.routes";
 import quizzRoutes from "./routes/quizz.routes";
 import apiRoutes from "./routes/api.routes";
 
-import dotenv from "dotenv";
-dotenv.config();
-
-
-
-
 const app = express();
+
 
 app.use(cors({
   origin: "http://localhost:5173",
@@ -26,23 +21,18 @@ app.use(express.json());
 
 console.log("DB =", process.env.DATABASE_URL);
 
-
+// Toutes les routes
 app.use("/users", userRoutes);
 app.use("/paths", pathRoutes);
 app.use("/catalog", catalogRoutes);
 app.use("/", moduleRoutes);
 app.use("/", lessonRoutes);
 app.use("/", quizzRoutes);
-
-
-
 app.use("/api/progress", progressRoutes);
+app.use("/api", apiRoutes);  
+
 
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
-
-  app.use(express.json());
-app.use("/api", apiRoutes);
-
 });
