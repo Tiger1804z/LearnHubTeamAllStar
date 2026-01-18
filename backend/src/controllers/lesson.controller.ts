@@ -1,8 +1,7 @@
 import type { Request, Response } from "express";
 import {z} from "zod";
-import { createPathService, getPathByIdService, updatePathService, deletePathService } from "../services/path.service";
 import { createLessonService, deleteLessonService, updateLessonService } from "../services/lesson.service";
-import { ca } from "zod/locales";
+
 
 const createPathSchema = z.object({
     title: z.string().min(1),
